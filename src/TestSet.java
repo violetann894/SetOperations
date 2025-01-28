@@ -23,7 +23,7 @@ public class TestSet {
         array1.add("Wednesday");
 
         array2.add("Wednesday");
-        array2.add("Tuesday");
+        array2.add("Thursday");
         array2.add("Friday");
 
         SetOperations tester = new SetOperations();
@@ -32,6 +32,6 @@ public class TestSet {
 
         System.out.println("Intersect: " + tester.intersect(array1, array2));
 
-        System.out.println("Complement: " + tester.complement(array2, sample));
+        System.out.println("Complement: " + tester.complement(array1, sample));
     }
 }
