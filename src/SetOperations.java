@@ -12,8 +12,8 @@ public class SetOperations {
      * The union method accepts two ArrayLists of strings and returns distinct strings that are shared
      * between the two inputted ArrayLists.
      *
-     * @param array1 This parameter accepts an ArrayList of strings to be added to array2.
-     * @param array2 This parameter accepts an ArrayList of strings to be added to array1.
+     * @param array1 This parameter accepts an ArrayList of strings to be joined with array2.
+     * @param array2 This parameter accepts an ArrayList of strings to be joined with array1.
      * @return This method returns an ArrayList of the distinct strings of both ArrayLists.
      */
     public ArrayList<String> union(ArrayList<String> array1, ArrayList<String> array2){
@@ -24,7 +24,6 @@ public class SetOperations {
         //Adds the ArrayLists to the result ArrayList
         holder.addAll(array1);
         holder.addAll(array2);
-
 
         //Sorts the set for easier duplicate removal
         Collections.sort(holder);
@@ -142,7 +141,7 @@ public class SetOperations {
      * are not in the subset.
      *
      * @param subset This parameter accepts an ArrayList of strings that contains a part of the full dataset.
-     * @param sample This parameter accepts an ArrayList of strings that is the full dataset.
+     * @param sample This parameter accepts an ArrayList of strings that is a sample of the full dataset.
      * @return This method returns an ArrayList of strings that contains all the values not in the given subset.
      */
     public ArrayList<String> complement(ArrayList<String> subset, ArrayList<String> sample){
