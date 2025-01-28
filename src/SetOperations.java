@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * The SetOperations class performs set theory operations, including unions, intersections and complements,
@@ -18,14 +19,53 @@ public class SetOperations {
     public ArrayList<String> union(ArrayList<String> array1, ArrayList<String> array2){
         //Initializes the ArrayLists needed to find the union
         ArrayList<String> result = new ArrayList<>();
-        ArrayList<String> toRemove = new ArrayList<>();
+        ArrayList<String> holder = new ArrayList<>();
 
         //Adds the ArrayLists to the result ArrayList
-        result.addAll(array1);
-        result.addAll(array2);
+        holder.addAll(array1);
+        holder.addAll(array2);
 
-        //Removes the duplicate values
 
+        //Sorts the set for easier duplicate removal
+        Collections.sort(holder);
+
+        //Looks at the previous string
+        String previousValue = "";
+
+        //Sets the highest number of occurrences allowed
+        int highestNumOfOccur = 1;
+
+        //Tracker of the number of occurrences of the current value
+        int currentNumOfOccur = 0;
+
+        //Iterates through the holder list
+        for(String value : holder){
+
+            //If the value is not the same as the previous value
+            if(!value.equals(previousValue)){
+
+                //Add the value to the list
+                result.add(value);
+
+                //Reset the number of occurrences
+                currentNumOfOccur = 1;
+
+            }else{
+                //Otherwise
+
+                //Increase the number of occurrences, since it is the same value
+                currentNumOfOccur ++;
+
+                //If the current number of occurrences is less than or equal to the highest number allowed
+                if(currentNumOfOccur <= highestNumOfOccur){
+
+                    //Add it to the results
+                    result.add(value);
+                }
+            }
+            //Set the previous value
+            previousValue = value;
+        }
 
         //Method returns the result of the union between array1 and array2
         return result;
@@ -39,20 +79,59 @@ public class SetOperations {
      * @return This method returns an ArrayList of strings that are only in both ArrayLists.
      */
     public ArrayList<String> intersect(ArrayList<String> array1, ArrayList<String> array2){
-        //Initializes the ArrayList needed to find the intersection
+        //Initializes the ArrayLists needed to find the intersection
         ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> holder = new ArrayList<>();
 
         //Loops through the two lists to see what values both have; adds them to the result ArrayList
         for(String value1: array1){
             for(String value2: array2){
                 if(value1.equals(value2)){
-                    result.add(value1);
+                    holder.add(value1);
                 }
             }
         }
 
-        //Removes the duplicate values
+        //Sorts the set for easier duplicate removal
+        Collections.sort(holder);
 
+        //Looks at the previous string
+        String previousValue = "";
+
+        //Sets the highest number of occurrences allowed
+        int highestNumOfOccur = 1;
+
+        //Tracker of the number of occurrences of the current value
+        int currentNumOfOccur = 0;
+
+        //Iterates through the holder list
+        for(String value : holder){
+
+            //If the value is not the same as the previous value
+            if(!value.equals(previousValue)){
+
+                //Add the value to the list
+                result.add(value);
+
+                //Reset the number of occurrences
+                currentNumOfOccur = 1;
+
+            }else{
+                //Otherwise
+
+                //Increase the number of occurrences, since it is the same value
+                currentNumOfOccur ++;
+
+                //If the current number of occurrences is less than or equal to the highest number allowed
+                if(currentNumOfOccur <= highestNumOfOccur){
+
+                    //Add it to the results
+                    result.add(value);
+                }
+            }
+            //Set the previous value
+            previousValue = value;
+        }
 
         //Method returns the result of the intersection between array1 and array2
         return result;
